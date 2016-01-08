@@ -12,7 +12,7 @@ import CoreLocation
 class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate,CLLocationManagerDelegate {
     
     var webView: WKWebView!
-    var progressView: UIProgressView!
+//    var progressView: UIProgressView!
     var locationManager:CLLocationManager!
     
     override func viewDidLoad() {
@@ -64,10 +64,10 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDele
         self.webView.navigationDelegate = self
         self.webView.UIDelegate = self
         
-        self.progressView = UIProgressView(progressViewStyle: .Default)
-        self.progressView.frame.size.width = self.view.frame.size.width
-        self.progressView.backgroundColor = UIColor.redColor()
-        self.view.addSubview(self.progressView)
+//        self.progressView = UIProgressView(progressViewStyle: .Default)
+//        self.progressView.frame.size.width = self.view.frame.size.width
+//        self.progressView.backgroundColor = UIColor.redColor()
+//        self.view.addSubview(self.progressView)
         
     }
     
@@ -98,7 +98,7 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDele
             self.title = self.webView.title
         } else if keyPath == "estimatedProgress" {
             print(webView.estimatedProgress)
-            self.progressView.setProgress(Float(webView.estimatedProgress), animated: true)
+//            self.progressView.setProgress(Float(webView.estimatedProgress), animated: true)
         }
         
         // 已经完成加载时，我们就可以做我们的事了
@@ -109,9 +109,9 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDele
                 print("call js alert")
             }
             
-            UIView.animateWithDuration(0.55, animations: { () -> Void in
-                self.progressView.alpha = 0.0;
-            })
+//            UIView.animateWithDuration(0.55, animations: { () -> Void in
+//                self.progressView.alpha = 0.0;
+//            })
         }
     }
     
@@ -133,7 +133,7 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDele
             // 不允许导航
             decisionHandler(.Cancel)
         } else {
-            self.progressView.alpha = 1.0
+//            self.progressView.alpha = 1.0
             
             decisionHandler(.Allow)
         }
