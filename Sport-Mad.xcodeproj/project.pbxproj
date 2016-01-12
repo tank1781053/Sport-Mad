@@ -150,7 +150,7 @@
 				TargetAttributes = {
 					DD6EE59E1C3F45ED0034C8D1 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = HV3GS74RVV;
+						DevelopmentTeam = GL5B9VDN4Y;
 					};
 					DD6EE5B21C3F45ED0034C8D1 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -331,9 +331,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Sport-Mad/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.EnchTech.Sport-Mad";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.EnchTech.Sport-Mad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -342,9 +344,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Sport-Mad/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.EnchTech.Sport-Mad";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.EnchTech.Sport-Mad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -392,6 +396,7 @@
 				DD6EE5BE1C3F45ED0034C8D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD6EE5BF1C3F45ED0034C8D1 /* Build configuration list for PBXNativeTarget "Sport-MadUITests" */ = {
 			isa = XCConfigurationList;
@@ -400,6 +405,7 @@
 				DD6EE5C11C3F45ED0034C8D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

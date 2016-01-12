@@ -48,12 +48,29 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDele
         
         // 添加一个名称，就可以在JS通过这个名称发送消息：
         // window.webkit.messageHandlers.AppModel.postMessage({body: 'xxx'})
-        configuretion.userContentController.addScriptMessageHandler(self, name: "AppModel")
+        configuretion.userContentController.addScriptMessageHandler(self, name: "sports-mad")
+
         
-        //self.webView = WKWebView(frame: self.view.bounds, configuration: configuretion)
-        self.webView = WKWebView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height), configuration: configuretion)
+        self.webView = WKWebView(frame: self.view.bounds, configuration: configuretion)
+        
+        
+        self.webView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
+        
+        
+        //加载静态html
+//        let htmlPath = NSBundle.mainBundle().pathForResource("index", ofType: "html")
+//        let bundleUrl = NSURL.fileURLWithPath(NSBundle.mainBundle().bundlePath)
+//        var error: NSError
+//        let html = NSString(contentsOfFile: htmlPath, encoding: NSUTF8StringEncoding,error:&error)
+//        if(error == nil)
+//        {
+//            self.webView.loadHTMLString(html, baseURL: bundleUrl)
+//        }
+        //加载网页
         let url = NSURL(string:"http://www.sports-mad.com")//NSBundle.mainBundle().URLForResource("test", withExtension: "html")
         self.webView.loadRequest(NSURLRequest(URL: url!))
+        
+        
         self.view.addSubview(self.webView);
         
         // 监听支持KVO的属性
@@ -85,8 +102,8 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDele
     // MARK: - WKScriptMessageHandler
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         print(message.body)
-        if message.name == "AppModel" {
-            print("message name is AppModel")
+        if message.name == "sport-mad" {
+            print("message name is sport-mad")
         }
     }
     
@@ -115,29 +132,6 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDele
         }
     }
     
-    // MARK: - WKNavigationDelegate
-    
-    // 决定导航的动作，通常用于处理跨域的链接能否导航。WebKit对跨域进行了安全检查限制，不允许跨域，因此我们要对不能跨域的链接
-    // 单独处理。但是，对于Safari是允许跨域的，不用这么处理。
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-        print(__FUNCTION__)
-        
-        let hostname = navigationAction.request.URL?.host?.lowercaseString
-        
-        print(hostname)
-        // 处理跨域问题
-        if navigationAction.navigationType == .LinkActivated && !hostname!.containsString(".baidu.com") {
-            // 手动跳转
-            UIApplication.sharedApplication().openURL(navigationAction.request.URL!)
-            
-            // 不允许导航
-            decisionHandler(.Cancel)
-        } else {
-//            self.progressView.alpha = 1.0
-            
-            decisionHandler(.Allow)
-        }
-    }
     
     func webViewWebContentProcessDidTerminate(webView: WKWebView) {
         print(__FUNCTION__)
